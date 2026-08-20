@@ -16,11 +16,12 @@
     .page {
       display: none;
       max-width: 450px;
-      margin: 40px auto;
+      margin: 30px auto;
       background: white;
       padding: 30px;
       border-radius: 20px;
       box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+      position: relative;
     }
     .active {
       display: block;
@@ -44,36 +45,119 @@
       border-radius: 15px;
       margin: 15px 0;
     }
+    .card {
+      background: #ffeaa7;
+      padding: 12px;
+      margin: 10px 0;
+      border-radius: 12px;
+      font-weight: bold;
+    }
+    .moving-container {
+      height: 100px;
+      position: relative;
+      margin-top: 20px;
+    }
+    #noBtn {
+      position: absolute;
+      background-color: #a4b0be;
+      left: 55%;
+    }
+    #yesBtn {
+      position: absolute;
+      right: 55%;
+    }
   </style>
 </head>
 <body>
 
-  <!-- PAGE 1 -->
+  <!-- PAGE 1: Intro -->
   <div id="page1" class="page active">
     <h1>Hey Sweetheart 💌</h1>
-    <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExM3Z2eXp2a3R6a3R6/v1.Y2lkPTc5MGI3NjEx/cute-bear-hug.gif" alt="Cute Bear">
-    <p>I made something special just for you.</p>
+    <img src="https://media1.tenor.com/m/X9M507gqE4AAAAAC/bear-hug.gif" alt="Cute Bear">
+    <p>I made this special little space just for you. Tap below to begin.</p>
     <button class="btn" onclick="nextPage(2)">Start Here ➔</button>
   </div>
 
-  <!-- PAGE 2 -->
+  <!-- PAGE 2: Apology -->
   <div id="page2" class="page">
     <h1>I'm Truly Sorry 🥺</h1>
-    <p>Write your sincere apology text here...</p>
+    <p>I hate that I upset you. You mean the absolute world to me, and I wanted to make sure you know how much I care.</p>
+    <img src="https://media1.tenor.com/m/93A-XwP0I2IAAAAC/sad-bear-crying.gif" alt="Sad Bear">
+    <br>
     <button class="btn" onclick="nextPage(3)">Next: Memory Lane ➔</button>
   </div>
 
-  <!-- PAGE 3 -->
+  <!-- PAGE 3: Photo / Memory Lane -->
   <div id="page3" class="page">
-    <h1>Our Best Moments 📸</h1>
-    <p>Photo gallery or carousel goes here!</p>
+    <h1>Memory Lane 📸</h1>
+    <p>Every single moment spent with you is my absolute favorite.</p>
+    <img src="https://media1.tenor.com/m/Z42L-b01xU0AAAAC/hug-love.gif" alt="Cute Hug">
+    <p><i>"You bring so much warmth and happiness into my life."</i></p>
     <button class="btn" onclick="nextPage(4)">Next ➔</button>
+  </div>
+
+  <!-- PAGE 4: 3 Reasons -->
+  <div id="page4" class="page">
+    <h1>Reasons You're Amazing ✨</h1>
+    <div class="card">1. Your bright, beautiful smile ❤️</div>
+    <div class="card">2. How kind and caring you are 🌸</div>
+    <div class="card">3. Just being you 💖</div>
+    <button class="btn" onclick="nextPage(5)">Next ➔</button>
+  </div>
+
+  <!-- PAGE 5: Coupons -->
+  <div id="page5" class="page">
+    <h1>Apology Coupons 🎟️</h1>
+    <p>Redeemable whenever you like:</p>
+    <div class="card" style="background:#ff7675; color:white;">1x Long Hug & Soft Head Scratches 💆‍♀️</div>
+    <div class="card" style="background:#74b9ff; color:white;">1x Favorite Food / Dessert Date 🍦</div>
+    <div class="card" style="background:#55efc4; color:black;">1x Movie Choice (No Objections) 🎬</div>
+    <button class="btn" onclick="nextPage(6)">Next ➔</button>
+  </div>
+
+  <!-- PAGE 6: Promise -->
+  <div id="page6" class="page">
+    <h1>My Promise to You 🤙</h1>
+    <p>I promise to listen better, cherish you more every single day, and always treat you like the princess you are.</p>
+    <img src="https://media1.tenor.com/m/vU2g4R39LnsAAAAC/milk-and-mocha-love.gif" alt="Promise Bear">
+    <br>
+    <button class="btn" onclick="nextPage(7)">Final Question ➔</button>
+  </div>
+
+  <!-- PAGE 7: The Final Verdict -->
+  <div id="page7" class="page">
+    <h1>Are We Okay? 🥺❤️</h1>
+    <p>Please forgive me?</p>
+
+    <div class="moving-container">
+      <button id="yesBtn" class="btn" onclick="forgiven()">Yes! 💕</button>
+      <button id="noBtn" class="btn" onmouseover="moveNoButton()">No 😜</button>
+    </div>
+
+    <div id="finalMessage" style="display:none; margin-top:30px;">
+      <h2>YAY! 🎉❤️</h2>
+      <p>Thank you my love! I love you so much! ✨🥰</p>
+      <img src="https://media1.tenor.com/m/gU2aK858g_YAAAAC/milk-and-mocha.gif" alt="Celebration">
+    </div>
   </div>
 
   <script>
     function nextPage(pageNum) {
       document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
       document.getElementById('page' + pageNum).classList.add('active');
+    }
+
+    function moveNoButton() {
+      const btn = document.getElementById('noBtn');
+      const x = Math.floor(Math.random() * 200) - 100;
+      const y = Math.floor(Math.random() * 100) - 50;
+      btn.style.transform = `translate(${x}px, ${y}px)`;
+    }
+
+    function forgiven() {
+      document.getElementById('yesBtn').style.display = 'none';
+      document.getElementById('noBtn').style.display = 'none';
+      document.getElementById('finalMessage').style.display = 'block';
     }
   </script>
 
