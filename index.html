@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>For You ❤️</title>
 
-  <!-- Google Font -->
+  <!-- Google Font: Fredoka -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&display=swap" rel="stylesheet">
@@ -16,41 +16,79 @@
       background-color: #fce4ec;
       color: #5a3d46;
       margin: 0;
-      padding: 0;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      box-sizing: border-box;
     }
 
-    h1 {
+    /* Page container setup: Hides inactive pages */
+    .page {
+      display: none;
+      background: #ffffff;
+      padding: 30px 24px;
+      border-radius: 20px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+      text-align: center;
+      max-width: 400px;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    /* Shows only the currently active page card */
+    .page.active {
+      display: block;
+    }
+
+    h1, h2 {
       color: #ff4081;
-      font-size: 2rem;
+      margin-top: 0;
       margin-bottom: 12px;
+      font-size: 1.8rem;
     }
 
     p {
       color: #7a505c;
-      font-size: 1.1rem;
+      font-size: 1.05rem;
       line-height: 1.5;
+      margin: 15px 0;
     }
 
-    .btn {
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      margin: 15px auto;
+      border: none;
+      background: transparent;
+    }
+
+    button, .btn {
+      display: inline-block;
       background-color: #ff6090;
       color: #ffffff;
       border: none;
       padding: 12px 24px;
-      font-size: 1.1rem;
+      font-size: 1rem;
       font-family: 'Fredoka', sans-serif;
       font-weight: 600;
       border-radius: 25px;
       cursor: pointer;
       box-shadow: 0 4px 10px rgba(255, 96, 144, 0.3);
+      margin-top: 15px;
       transition: transform 0.2s ease, background-color 0.2s ease;
     }
 
-    .btn:hover {
+    button:hover, .btn:hover {
       background-color: #ff4081;
       transform: scale(1.05);
     }
   </style>
 </head>
+<body>
 
   <!-- PAGE 1: Intro -->
   <div id="page1" class="page active">
