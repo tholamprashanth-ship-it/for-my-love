@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>For You ❤️</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #fff0f5;
+      color: #4a4a4a;
+      text-align: center;
+      margin: 0;
+      padding: 20px;
+    }
+    .page {
+      display: none;
+      max-width: 450px;
+      margin: 40px auto;
+      background: white;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    }
+    .active {
+      display: block;
+    }
+    .btn {
+      background-color: #ff6b81;
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      font-size: 16px;
+      border-radius: 25px;
+      cursor: pointer;
+      margin-top: 15px;
+      transition: transform 0.2s;
+    }
+    .btn:hover {
+      transform: scale(1.05);
+    }
+    img {
+      max-width: 100%;
+      border-radius: 15px;
+      margin: 15px 0;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- PAGE 1 -->
+  <div id="page1" class="page active">
+    <h1>Hey Sweetheart 💌</h1>
+    <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExM3Z2eXp2a3R6a3R6/v1.Y2lkPTc5MGI3NjEx/cute-bear-hug.gif" alt="Cute Bear">
+    <p>I made something special just for you.</p>
+    <button class="btn" onclick="nextPage(2)">Start Here ➔</button>
+  </div>
+
+  <!-- PAGE 2 -->
+  <div id="page2" class="page">
+    <h1>I'm Truly Sorry 🥺</h1>
+    <p>Write your sincere apology text here...</p>
+    <button class="btn" onclick="nextPage(3)">Next: Memory Lane ➔</button>
+  </div>
+
+  <!-- PAGE 3 -->
+  <div id="page3" class="page">
+    <h1>Our Best Moments 📸</h1>
+    <p>Photo gallery or carousel goes here!</p>
+    <button class="btn" onclick="nextPage(4)">Next ➔</button>
+  </div>
+
+  <script>
+    function nextPage(pageNum) {
+      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+      document.getElementById('page' + pageNum).classList.add('active');
+    }
+  </script>
+
+</body>
+</html>
