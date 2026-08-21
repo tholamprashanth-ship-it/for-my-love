@@ -87,9 +87,9 @@
       transform: scale(1.05);
     }
 
-    /* General Card Styling for Page 5 Coupons */
+    /* General Card Styling for Page 6 Coupons */
     .card {
-      background: #fff0f5;
+      background: #fff0f3;
       color: #5a3d46;
       border-radius: 12px;
       padding: 14px 18px;
@@ -100,7 +100,7 @@
 
     /* Card Item Styling for Page 3 */
     .card-item {
-      background: #fff0f5;
+      background: #fff0f3;
       border-left: 4px solid #ff6090;
       border-radius: 12px;
       padding: 12px 16px;
@@ -119,7 +119,7 @@
       font-size: 0.95rem;
     }
 
-    /* Container for Moving No Button on Page 7 */
+    /* Container for Moving No Button on Page 8 */
     .moving-container {
       position: relative;
       min-height: 80px;
@@ -241,6 +241,114 @@
       font-weight: 600;
       margin-bottom: 12px;
     }
+
+    /* --- PAGE 5: QUIZ STYLING --- */
+    .instruction-banner {
+      background: #ffe4e1;
+      color: #d81b60;
+      border: 2px dashed #ff85a2;
+      padding: 12px 15px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: bold;
+      text-align: center;
+      margin-bottom: 20px;
+      width: 100%;
+      box-shadow: 0 4px 10px rgba(255, 133, 162, 0.15);
+    }
+
+    .quiz-container {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .question-card {
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 16px;
+      box-shadow: 0 6px 15px rgba(255, 182, 193, 0.3);
+      border: 2px solid #ffd1dc;
+      transition: all 0.4s ease;
+      text-align: center;
+    }
+
+    .question-card.quiz-hidden {
+      display: none;
+    }
+
+    .question-title {
+      font-size: 1rem;
+      color: #d81b60;
+      margin-bottom: 12px;
+      line-height: 1.4;
+    }
+
+    .options-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .option-btn {
+      background-color: #fff0f3;
+      border: 2px solid #ffccd5;
+      border-radius: 14px;
+      padding: 10px 12px;
+      font-size: 0.9rem;
+      color: #555;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      line-height: 1.3;
+      word-wrap: break-word;
+      font-family: 'Fredoka', cursive, sans-serif;
+      margin-top: 0;
+      box-shadow: none;
+    }
+
+    .option-btn:hover {
+      background-color: #ffe6ea;
+      transform: translateY(-2px);
+    }
+
+    .option-btn.selected-correct {
+      background-color: #a8e6cf !important;
+      color: #1b5e20 !important;
+      border-color: #81c784 !important;
+      font-weight: bold;
+      transform: scale(1.02);
+    }
+
+    .option-btn.selected-wrong {
+      background-color: #ffb3ba !important;
+      color: #b71c1c !important;
+      border-color: #e57373 !important;
+      animation: shake 0.4s ease;
+    }
+
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      20%, 60% { transform: translateX(-6px); }
+      40%, 80% { transform: translateX(6px); }
+    }
+
+    .quiz-next-btn {
+      display: none;
+      margin-top: 20px;
+      width: 100%;
+    }
+
+    .quiz-next-btn.quiz-visible {
+      display: inline-block;
+      animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    @keyframes popIn {
+      0% { opacity: 0; transform: scale(0.8); }
+      100% { opacity: 1; transform: scale(1); }
+    }
   </style>
 </head>
 <body>
@@ -336,7 +444,7 @@
       </p>
     </div>
     <div style="width: 100%; margin: 20px 0 15px 0; overflow: hidden; border-radius: 12px;">
-   <img src="page3.2.gif" alt="Cat Hug GIF" style="width: 100%; height: auto; max-height: 220px; object-fit: cover; display: block;">
+      <img src="page3.2.gif" alt="Cat Hug GIF" style="width: 100%; height: auto; max-height: 220px; object-fit: cover; display: block;">
     </div>
 
     <button class="btn" onclick="nextPage(2)">⬅️ Back to Apology</button>
@@ -431,47 +539,139 @@
     </div>
 
     <p style="max-width: 500px; margin: 20px auto 25px auto; padding: 15px 20px; background: rgba(255, 255, 255, 0.85); border-radius: 15px; font-size: 0.95rem; line-height: 1.6; color: #4a4a4a; text-align: center; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);">
-  We started speaking and interacting on Discord and in servers, and over time, it became so much more. Then our gaming journey began, which is the most beautiful experience I've ever had in my life. Once Human allowed us to spend even more time with each other. I love how chaotic, cheerful, and joyful you are in-game. Doing random things and wandering around is literally so cute. I really love playing games with you—it's one of the main things that brought us close.<br><br>
+      We started speaking and interacting on Discord and in servers, and over time, it became so much more. Then our gaming journey began, which is the most beautiful experience I've ever had in my life. Once Human allowed us to spend even more time with each other. I love how chaotic, cheerful, and joyful you are in-game. Doing random things and wandering around is literally so cute. I really love playing games with you—it's one of the main things that brought us close.<br><br>
 
-  Later, we tried many games, and you guided me and taught me how to play. You were beside me all the time. Sometimes we would be chill, and sometimes we would be serious about the games. For me, games weren't just a stress buster—it was more about wanting to be at the top and wanting to max out everything. But I promise you, I literally learned patience in games from you. You made me realize so many things, like truly enjoying the game and just chilling around. We had so much fun playing games only because you were with me.<br><br>
+      Later, we tried many games, and you guided me and taught me how to play. You were beside me all the time. Sometimes we would be chill, and sometimes we would be serious about the games. For me, games weren't just a stress buster—it was more about wanting to be at the top and wanting to max out everything. But I promise you, I literally learned patience in games from you. You made me realize so many things, like truly enjoying the game and just chilling around. We had so much fun playing games only because you were with me.<br><br>
 
-  Right now, I'm not even getting any interest in playing anything because of your absence. Just because of you, I enjoy the games. In every game we played, I had a lot of fun and enjoyment, and you made me laugh a lot with your cute and silly things. Playing games with you became one of the most important things in my life. The games themselves don't matter to me; they matter to me because you are beside me. I feel your presence while being long distance, and that makes every second so beautiful and incredible. You bring all the life, joy, and warmth into these moments, and I feel so happy when we just sit and talk for hours in-game.<br><br>
+      Right now, I'm not even getting any interest in playing anything because of your absence. Just because of you, I enjoy the games. In every game we played, I had a lot of fun and enjoyment, and you made me laugh a lot with your cute and silly things. Playing games with you became one of the most important things in my life. The games themselves don't matter to me; they matter to me because you are beside me. I feel your presence while being long distance, and that makes every second so beautiful and incredible. You bring all the life, joy, and warmth into these moments, and I feel so happy when we just sit and talk for hours in-game.<br><br>
 
-  Every game we played is so precious to me, and I will never, ever forget that beautiful time. I really, really want our gaming hobby to go on forever, where we enjoy everything, laugh, and have fun. I want it to be real life, where we sit next to each other and try many games together. Just imagining it makes me so happy. We will tease each other, we can do so many things, and every second will be so precious.<br><br>
+      Every game we played is so precious to me, and I will never, ever forget that beautiful time. I really, really want our gaming hobby to go on forever, where we enjoy everything, laugh, and have fun. I want it to be real life, where we sit next to each other and try many games together. Just imagining it makes me so happy. We will tease each other, we can do so many things, and every second will be so precious.<br><br>
 
-  Thank you for being my only favorite gaming partner forever, Miss Cute Hiba. All of our game characters are missing each other :(. Remember the good, beautiful times and moments we had in-game. Can you please start playing games with me again? I don't have any interest and can't enjoy anything without you.<br><br>
+      Thank you for being my only favorite gaming partner forever, Miss Cute Hiba. All of our game characters are missing each other :(. Remember the good, beautiful times and moments we had in-game. Can you please start playing games with me again? I don't have any interest and can't enjoy anything without you.<br><br>
 
-  Pretty please mama
-</p>
-  <div style="width: 100%; margin: 20px 0 15px 0; text-align: center;">
-  <img src="page5.gif" alt="Cat Hug GIF" style="width: 100%; max-width: 100%; height: auto; border-radius: 12px; display: block;">
-</div>
+      Pretty please mama
+    </p>
+    <div style="width: 100%; margin: 20px 0 15px 0; text-align: center;">
+      <img src="page5.gif" alt="Cat Hug GIF" style="width: 100%; max-width: 100%; height: auto; border-radius: 12px; display: block;">
+    </div>
 
     <button class="btn" onclick="nextPage(3)">⬅️ Back</button>
-    <button class="btn" onclick="nextPage(5)">Next: Coupons ➔</button>
+    <button class="btn" onclick="nextPage(5)">Take the Quiz 🧠➔</button>
   </div>
 
-  <!-- PAGE 5: Coupons -->
+  <!-- PAGE 5: The Quiz -->
   <div id="page5" class="page">
+    <h1>The Ultimate Quiz 🧠💖</h1>
+
+    <div class="instruction-banner">
+      ✨ Tip: Select the right answer to unlock the next question! ✨
+    </div>
+
+    <div class="quiz-container">
+
+      <!-- Question 1 (Correct: Option 2) -->
+      <div class="question-card" id="q1">
+        <h3 class="question-title">1. Is Shura so stupid and dumb?</h3>
+        <div class="options-grid">
+          <button class="option-btn" onclick="checkAnswer(1, 1, this)">Yes so stupid</button>
+          <button class="option-btn" onclick="checkAnswer(1, 2, this)">World's most stupid guy ever</button>
+          <button class="option-btn" onclick="checkAnswer(1, 3, this)">Dumberer, dumbest ever</button>
+          <button class="option-btn" onclick="checkAnswer(1, 4, this)">Shura means stupidity</button>
+        </div>
+      </div>
+
+      <!-- Question 2 (Correct: Option 4) -->
+      <div class="question-card quiz-hidden" id="q2">
+        <h3 class="question-title">2. Shura is so peaceful, calm, composed and good person...</h3>
+        <div class="options-grid">
+          <button class="option-btn" onclick="checkAnswer(2, 1, this)">He is worst sht i ever saw</button>
+          <button class="option-btn" onclick="checkAnswer(2, 2, this)">Pak him</button>
+          <button class="option-btn" onclick="checkAnswer(2, 3, this)">Peaceful? His ass such a jerk</button>
+          <button class="option-btn" onclick="checkAnswer(2, 4, this)">All of the above</button>
+        </div>
+      </div>
+
+      <!-- Question 3 (Correct: Option 3) -->
+      <div class="question-card quiz-hidden" id="q3">
+        <h3 class="question-title">3. Is Hiba so cute, very beautiful and so gorgeous?</h3>
+        <div class="options-grid">
+          <button class="option-btn" onclick="checkAnswer(3, 1, this)">Soooo cute, beautiful and gorgeous</button>
+          <button class="option-btn" onclick="checkAnswer(3, 2, this)">Of course I am, duhh</button>
+          <button class="option-btn" onclick="checkAnswer(3, 3, this)">Literally the only beautiful woman in the universe</button>
+          <button class="option-btn" onclick="checkAnswer(3, 4, this)">World's most gorgeous</button>
+        </div>
+      </div>
+
+      <!-- Question 4 (Correct: Option 1) -->
+      <div class="question-card quiz-hidden" id="q4">
+        <h3 class="question-title">4. Is Hiba better than Shura in every aspects?</h3>
+        <div class="options-grid">
+          <button class="option-btn" onclick="checkAnswer(4, 1, this)">10 billions times better than tht hekk</button>
+          <button class="option-btn" onclick="checkAnswer(4, 2, this)">Yess abosuletly</button>
+          <button class="option-btn" onclick="checkAnswer(4, 3, this)">Excuse me ??? Shura !! and better !! in same line ? Ofc Hiba is better</button>
+          <button class="option-btn" onclick="checkAnswer(4, 4, this)">Literally a lot more better</button>
+        </div>
+      </div>
+
+      <!-- Question 5 (Correct: Option 3) -->
+      <div class="question-card quiz-hidden" id="q5">
+        <h3 class="question-title">5. Does Shura love Hiba so truly?</h3>
+        <div class="options-grid">
+          <button class="option-btn" onclick="checkAnswer(5, 1, this)">He loves her more than anything and everyone</button>
+          <button class="option-btn" onclick="checkAnswer(5, 2, this)">Yess he is</button>
+          <button class="option-btn" onclick="checkAnswer(5, 3, this)">He loves her way too much tht he cant live without her</button>
+          <button class="option-btn" onclick="checkAnswer(5, 4, this)">He literally loves her a lot</button>
+        </div>
+      </div>
+
+      <!-- Question 6 (Correct: Option 2) -->
+      <div class="question-card quiz-hidden" id="q6">
+        <h3 class="question-title">6. Is Hiba so precious?</h3>
+        <div class="options-grid">
+          <button class="option-btn" onclick="checkAnswer(6, 1, this)">Very very very precious</button>
+          <button class="option-btn" onclick="checkAnswer(6, 2, this)">Literally the only precious person in entire existence</button>
+          <button class="option-btn" onclick="checkAnswer(6, 3, this)">She is so precious</button>
+          <button class="option-btn" onclick="checkAnswer(6, 4, this)">Most precioussss ever</button>
+        </div>
+      </div>
+
+      <!-- Question 7 (Correct: Option 4) -->
+      <div class="question-card quiz-hidden" id="q7">
+        <h3 class="question-title">7. Does Hiba going to talk with Shura?</h3>
+        <div class="options-grid">
+          <button class="option-btn" onclick="checkAnswer(7, 1, this)">Yes</button>
+          <button class="option-btn" onclick="checkAnswer(7, 2, this)">Yes but only limited time for tht hekk</button>
+          <button class="option-btn" onclick="checkAnswer(7, 3, this)">Absoluetly, he is her boy</button>
+          <button class="option-btn" onclick="checkAnswer(7, 4, this)">If tht stupid guy wont ruin her peace then she will</button>
+        </div>
+      </div>
+
+    </div>
+
+    <button class="btn quiz-next-btn" id="finishBtn" onclick="nextPage(6)">Next: Coupons ➔</button>
+  </div>
+
+  <!-- PAGE 6: Coupons -->
+  <div id="page6" class="page">
     <h1>Apology Coupons 🎟️</h1>
     <p>Redeemable whenever you like:</p>
     <div class="card" style="background:#ff7675; color:white;">1x Long Hug & Soft Head Scratches 💆‍♀️</div>
     <div class="card" style="background:#74b9ff; color:white;">1x Favorite Food / Dessert Date 🍦</div>
     <div class="card" style="background:#55efc4; color:black;">1x Movie Choice (No Objections) 🎬</div>
-    <button class="btn" onclick="nextPage(6)">Next ➔</button>
+    <button class="btn" onclick="nextPage(7)">Next ➔</button>
   </div>
 
-  <!-- PAGE 6: Promise -->
-  <div id="page6" class="page">
+  <!-- PAGE 7: Promise -->
+  <div id="page7" class="page">
     <h1>My Promise to You 🤙</h1>
     <p>I promise to listen better, cherish you more every single day, and always treat you like the princess you are.</p>
     <img src="https://media1.tenor.com/m/vU2g4R39LnsAAAAC/milk-and-mocha-love.gif" alt="Promise Bear">
     <br>
-    <button class="btn" onclick="nextPage(7)">Final Question ➔</button>
+    <button class="btn" onclick="nextPage(8)">Final Question ➔</button>
   </div>
 
-  <!-- PAGE 7: The Final Verdict -->
-  <div id="page7" class="page">
+  <!-- PAGE 8: The Final Verdict -->
+  <div id="page8" class="page">
     <h1>Are We Okay? 🥺❤️</h1>
     <p>Please forgive me?</p>
 
@@ -520,7 +720,6 @@
     function openLightbox(imgSrc, captionText, isLarge = false) {
       const modalContent = document.querySelector('.lightbox-content');
       
-      // Expands modal width to 90vw for game17 and game18, keeps default 340px for others
       if (isLarge) {
         modalContent.style.maxWidth = '90vw';
       } else {
@@ -534,6 +733,56 @@
 
     function closeLightbox() {
       document.getElementById('lightbox').classList.remove('active');
+    }
+
+    /* Quiz Logic for Page 5 */
+    const correctAnswers = {
+      1: 2,
+      2: 4,
+      3: 3,
+      4: 1,
+      5: 3,
+      6: 2,
+      7: 4
+    };
+
+    function checkAnswer(qNum, selectedOption, btnElement) {
+      if (selectedOption === correctAnswers[qNum]) {
+        const currentCard = document.getElementById(`q${qNum}`);
+        const buttons = currentCard.querySelectorAll('.option-btn');
+
+        buttons.forEach(btn => btn.style.pointerEvents = 'none');
+
+        btnElement.classList.remove('selected-wrong');
+        btnElement.classList.add('selected-correct');
+        btnElement.innerText += ' ✅';
+
+        setTimeout(() => {
+          const nextQuestionNum = qNum + 1;
+          const nextCard = document.getElementById(`q${nextQuestionNum}`);
+
+          if (nextCard) {
+            nextCard.classList.remove('quiz-hidden');
+            nextCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          } else {
+            const finishBtn = document.getElementById('finishBtn');
+            finishBtn.classList.add('quiz-visible');
+            finishBtn.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          }
+        }, 500);
+
+      } else {
+        if (!btnElement.classList.contains('selected-wrong')) {
+          btnElement.classList.add('selected-wrong');
+          const originalText = btnElement.innerText;
+          btnElement.innerText = originalText + ' ❌ (Try again!)';
+
+          setTimeout(() => {
+            btnElement.classList.remove('selected-wrong');
+            btnElement.innerText = originalText;
+          }, 1200);
+        }
+      }
     }
   </script>
 
