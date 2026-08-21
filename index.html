@@ -223,11 +223,13 @@
       width: 100%;
       text-align: center;
       box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+      box-sizing: border-box;
+      transition: max-width 0.2s ease;
     }
 
     .lightbox-content img {
       width: 100%;
-      max-height: 60vh;
+      max-height: 75vh;
       object-fit: contain;
       border-radius: 8px;
       margin-bottom: 10px;
@@ -338,7 +340,7 @@
     <button class="btn" onclick="nextPage(4)">US in different versions ➔</button>
   </div>
 
-  <!-- PAGE 4: In-Game Memories Gallery (20 Polaroids) -->
+  <!-- PAGE 4: In-Game Memories Gallery (18 Polaroids) -->
   <div id="page4" class="page">
     <h1>In-Game Memories 🎮❤️</h1>
     <p style="font-size: 0.88rem; margin-top: -6px; color: #ff6090;">
@@ -410,21 +412,17 @@
         <img src="game16.jpg" alt="Memory 16">
         <div class="polaroid-caption">Memory #16</div>
       </div>
-      <div class="polaroid" onclick="openLightbox('game17.jpg', 'Quiet Moments 🌿')">
+
+      <!-- LARGE CHAT PHOTO #17 -->
+      <div class="polaroid" onclick="openLightbox('game17.jpg', 'Our Agreement 📜❤️', true)">
         <img src="game17.jpg" alt="Memory 17">
         <div class="polaroid-caption">Memory #17</div>
       </div>
-      <div class="polaroid" onclick="openLightbox('game18.jpg', 'Always Watching Over You 👁️❤️')">
+
+      <!-- LARGE CHAT PHOTO #18 -->
+      <div class="polaroid" onclick="openLightbox('game18.jpg', 'Always Watching Over You 👁️❤️', true)">
         <img src="game18.jpg" alt="Memory 18">
         <div class="polaroid-caption">Memory #18</div>
-      </div>
-      <div class="polaroid" onclick="openLightbox('game19.jpg', 'Unstoppable Duo ⚡')">
-        <img src="game19.jpg" alt="Memory 19">
-        <div class="polaroid-caption">Memory #19</div>
-      </div>
-      <div class="polaroid" onclick="openLightbox('game20.jpg', 'Forever My Player 2 💖')">
-        <img src="game20.jpg" alt="Memory 20">
-        <div class="polaroid-caption">Memory #20</div>
       </div>
     </div>
 
@@ -498,7 +496,16 @@
     }
 
     /* Lightbox Functions for Page 4 */
-    function openLightbox(imgSrc, captionText) {
+    function openLightbox(imgSrc, captionText, isLarge = false) {
+      const modalContent = document.querySelector('.lightbox-content');
+      
+      // Expands modal width to 90vw for game17 and game18, keeps default 340px for others
+      if (isLarge) {
+        modalContent.style.maxWidth = '90vw';
+      } else {
+        modalContent.style.maxWidth = '340px';
+      }
+
       document.getElementById('lightbox-img').src = imgSrc;
       document.getElementById('lightbox-caption').innerText = captionText;
       document.getElementById('lightbox').classList.add('active');
@@ -510,4 +517,4 @@
   </script>
 
 </body>
-</html> 
+</html>
