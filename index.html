@@ -657,6 +657,16 @@
       <button class="btn quiz-next-btn" id="finishBtn" onclick="nextPage(6)">Next: Coupons ➔</button>
     </div>
 </div>
+    <script>
+  // Add this logic inside your existing checkAnswer function in your script tag:
+  function checkAnswer(qNum, optionNum, btn) {
+    // ... (your existing code for checking answers) ...
+
+    if (qNum === 7 && optionNum === 4) {
+      document.getElementById('geniusMessage7').style.display = 'block';
+    }
+  }
+</script>
 
   <!-- PAGE 6: Coupons -->
   <div id="page6" class="page">
