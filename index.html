@@ -752,7 +752,8 @@ Many people will say it's not possible, it's delusional, think about reality,  t
   <button class="btn" onclick="nextPage(9)">next ➔</button>
 </div>      
 <!-- PAGE 9: The Sealed Letter -->
-<div id="page9" class="card" style="display: none; width: 100%; box-sizing: border-box; text-align: left; line-height: 1.6; padding: 20px; margin-bottom: 20px;">
+<!-- PAGE 9: The Sealed Letter -->
+<div id="page9" class="page card" style="width: 100%; box-sizing: border-box; text-align: left; line-height: 1.6; padding: 20px; margin-bottom: 20px;">
     <h1 style="color: #b5455d; margin-bottom: 25px; font-size: 2.5rem; font-family: 'Patrick Hand', cursive, sans-serif;">A Little Note For You 💌</h1>
 
     <div id="letter-container" style="position: relative; width: 100%; min-height: 320px; margin-bottom: 25px; display: flex; justify-content: center; align-items: center;">
@@ -769,7 +770,7 @@ Many people will say it's not possible, it's delusional, think about reality,  t
             <span style="color: white; font-weight: bold; font-size: 1.2rem; letter-spacing: 1.5px; pointer-events: none; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">OPEN</span>
         </div>
 
-        <!-- Opened Letter Content (Hard-stacked lines) -->
+        <!-- Opened Letter Content -->
         <div id="opened-letter" style="display: none; text-align: left; line-height: 1.8; color: #5c1827; font-size: 1.35rem; width: 100%; background: #fffcf9; padding: 10px; box-sizing: border-box; font-family: 'Patrick Hand', cursive, sans-serif;">
             <p id="line1" style="margin-bottom: 20px; display: none;">
                 I know things have been rough, and I'm truly sorry for my part in it. But even when we fight or when you block me, my feelings for you never waver.
@@ -788,8 +789,8 @@ Many people will say it's not possible, it's delusional, think about reality,  t
 
     <!-- Navigation Controls -->
     <div id="nav-area">
-        <a class="btn" onclick="nextPage(8)">⬅ Back</a>
-        <a id="finish-btn" class="btn" style="display: none; margin-top: 20px;" onclick="alert('Journey Finished!')">Finish ✨</a>
+        <button class="btn" onclick="nextPage(8)">⬅ Back</button>
+        <button id="finish-btn" class="btn" style="display: none; margin-top: 20px;" onclick="alert('Journey Finished!')">Finish ✨</button>
     </div>
 </div>
 
@@ -801,7 +802,8 @@ Many people will say it's not possible, it's delusional, think about reality,  t
         const letterBox = document.getElementById('opened-letter');
         letterBox.style.display = 'block';
 
-        const speed = 1000;
+        // You can change this number to make the text appear faster (e.g., 500) or slower (e.g., 1500)
+        const speed = 1000; 
 
         setTimeout(() => {
             document.getElementById('line1').style.display = 'block';
