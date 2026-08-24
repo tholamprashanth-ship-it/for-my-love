@@ -755,7 +755,8 @@ Many people will say it's not possible, it's delusional, think about reality,  t
 
 <!-- PAGE 9: The Sealed Letter with Typing Animation -->
 <!-- PAGE 9: The Sealed Letter -->
-<div id="page9" class="page" style="width: 100%; max-width: 480px; margin: 0 auto; box-sizing: border-box; text-align: left; padding: 20px;">
+<!-- PAGE 9: The Sealed Letter -->
+<div id="page9" class="page" style="display: none; text-align: center; padding: 20px;">
     
     <!-- CSS Animation for the Heartbeat Effect -->
     <style>
@@ -768,31 +769,68 @@ Many people will say it's not possible, it's delusional, think about reality,  t
         }
         .pulsing-envelope {
             animation: heartbeat 2s infinite ease-in-out;
+            cursor: pointer;
         }
     </style>
 
-    <h1 style="color: #b5455d; margin-bottom: 25px; font-size: 2.2rem; font-family: 'Patrick Hand', cursive, sans-serif; text-align: center;">A Little Note For You 💌</h1>
+    <h1 style="color: #b5455d; margin-bottom: 25px; font-size: 2.2rem; font-family: 'Patrick Hand', cursive, sans-serif;">A Little Note For You 💌</h1>
 
-    <div id="letter-container" style="position: relative; width: 100%; min-height: 320px; margin-bottom: 25px; display: flex; justify-content: center; align-items: center;">
+    <div id="letter-container" style="position: relative; width: 100%; min-height: 280px; margin-bottom: 20px; display: flex; justify-content: center; align-items: center;">
         
-        <!-- Closed Envelope Container (Click anywhere here to open) -->
-        <div id="closed-envelope" onclick="openLetter()" style="width: 100%; max-width: 360px; text-align: center; position: relative; cursor: pointer;">
-            
+        <!-- Closed Envelope Container (Click anywhere on it to open) -->
+        <div id="closed-envelope" onclick="openLetter()" style="width: 100%; max-width: 320px; text-align: center; position: relative; margin: 0 auto;">
             <img src="envelope.png" alt="Cute Sealed Envelope" class="pulsing-envelope" style="width: 100%; height: auto; display: block; border-radius: 12px; filter: drop-shadow(0 8px 20px rgba(181,69,93,0.25));">
             
-            <p style="margin-top: 18px; color: #8c4a57; font-size: 1.15rem; font-style: italic; font-family: 'Patrick Hand', cursive, sans-serif;">
+            <p style="margin-top: 15px; color: #8c4a57; font-size: 1.15rem; font-style: italic; font-family: 'Patrick Hand', cursive, sans-serif;">
                 Tap the envelope to open your letter ✨
             </p>
         </div>
 
         <!-- Opened Letter Content (Typewriter Target) -->
-        <div id="opened-letter" style="display: none; text-align: left; line-height: 1.8; color: #5c1827; font-size: 1.25rem; width: 100%; font-family: 'Patrick Hand', cursive, sans-serif; padding: 10px;">
-            <p id="line1" style="margin-bottom: 20px;"></p>
-            <p id="line2" style="margin-bottom: 20px;"></p>
-            <p id="line3" style="margin-bottom: 25px;"></p>
+        <div id="opened-letter" style="display: none; text-align: left; line-height: 1.8; color: #5c1827; font-size: 1.2rem; width: 100%; font-family: 'Patrick Hand', cursive, sans-serif; padding: 5px;">
+            <p id="line1" style="margin-bottom: 15px;"></p>
+            <p id="line2" style="margin-bottom: 15px;"></p>
+            <p id="line3" style="margin-bottom: 15px;"></p>
         </div>
 
     </div>
+</div>
+
+<script>
+    function openLetter() {
+        document.getElementById('closed-envelope').style.display = 'none';
+        document.getElementById('opened-letter').style.display = 'block';
+
+        const text1 = "I know things have been rough, and I'm truly sorry for my part in it. But even when we fight or when you block me, my feelings for you never waver.";
+        const text2 = "You aren't just a temporary chapter. You are the strongest, most unique, and most special person I know. You are completely irreplaceable.";
+        const text3 = "Whenever the anger clears up, I hope you remember that we're a team. I'm always rooting for you, and I love you more than words can say. ❤️";
+
+        typeLine(text1, 'line1', 30, function() {
+            typeLine(text2, 'line2', 30, function() {
+                typeLine(text3, 'line3', 30, function() {
+                    // Optional: If you want a finish action or button to appear
+                });
+            });
+        });
+    }
+
+    function typeLine(text, elementId, speed, callback) {
+        let index = 0;
+        const target = document.getElementById(elementId);
+        target.innerHTML = "";
+
+        function type() {
+            if (index < text.length) {
+                target.innerHTML += text.charAt(index);
+                index++;
+                setTimeout(type, speed);
+            } else if (callback) {
+                callback();
+            }
+        }
+        type();
+    }
+</script>
 
     <!-- Navigation Controls -->
     <div id="nav-area" style="text-align: center;">
