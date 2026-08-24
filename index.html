@@ -815,33 +815,7 @@ Many people will say it's not possible, it's delusional, think about reality,  t
     </div>
 </div>
 
-<script>
-    function openLetter() {
-        document.getElementById('closed-envelope').style.display = 'none';
-        document.getElementById('red-stamp').style.display = 'none';
-        
-        const letterBox = document.getElementById('opened-letter');
-        letterBox.style.display = 'block';
 
-        const speed = 1000; 
-
-        setTimeout(() => {
-            document.getElementById('line1').style.display = 'block';
-        }, 200);
-
-        setTimeout(() => {
-            document.getElementById('line2').style.display = 'block';
-        }, 200 + speed);
-
-        setTimeout(() => {
-            document.getElementById('line3').style.display = 'block';
-        }, 200 + (speed * 2));
-
-        setTimeout(() => {
-            document.getElementById('finish-btn').style.display = 'inline-block';
-        }, 200 + (speed * 3));
-    }
-</script>
   <!-- Lightbox Modal Overlay for Enlarged Photos -->
   <div id="lightbox" class="lightbox" onclick="closeLightbox()">
     <div class="lightbox-content" onclick="event.stopPropagation()">
