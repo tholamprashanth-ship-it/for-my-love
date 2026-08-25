@@ -513,78 +513,81 @@ body > button:not(.active), body > .btn:not(.active) {
       padding: 0 !important;
     }
   /* Container for the final cute interaction page */
+/* Container layout: pushes standard contents (YES group) to the right */
 .forgive-container {
-  position: relative; /* Crucial for 'No' button movement */
+  position: relative;
   width: 100%;
-  height: 180px; /* Give it some vertical space */
+  height: 250px;
   display: flex;
-  justify-content: center;
+  justify-content: flex-end; /* Keeps YES group on the right */
+  align-items: flex-start;
+  padding-right: 30px;
+  margin-top: 20px;
+}
+
+/* Stacks button and image vertically */
+.btn-group {
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 25px; /* space between buttons */
-  margin-top: 30px;
+  gap: 10px;
 }
 
-/* Cute Title Styling */
-.cute-title {
-  color: #ff5e78;
-  font-family: 'Poppins', cursive; /* Assuming you have a cute font loaded */
-  text-shadow: 2px 2px 0px rgba(255, 179, 195, 0.4);
+/* Positions NO group absolutely on the left */
+.no-group {
+  position: absolute;
+  left: 20px;               /* Initial left starting position */
+  top: 10px;
+  z-index: 2;
+  transition: all 0.12s ease; /* Smooth dodge animation */
 }
 
-/* Cute Button Base Styling */
+/* Button image scaling */
+.btn-match-img {
+  width: 100%;
+  max-width: 100%;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 15px;
+  pointer-events: none;     /* Mouse events pass to the button wrapper */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Button Base Styles */
 .cute-btn {
-  padding: 15px 35px;
-  font-size: 1.2rem;
+  padding: 12px 28px;
+  font-size: 1.1rem;
   font-weight: 700;
   border: none;
-  border-radius: 50px; /* Fully pill-shaped */
+  border-radius: 50px;
   cursor: pointer;
-  transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
-  font-family: 'Poppins', sans-serif;
-  letter-spacing: 0.5px;
+  font-family: inherit;
 }
 
-/* YES BUTTON: The pulsating heart color */
 .yes-btn {
   background-color: #ff4d6d;
   color: white;
   box-shadow: 0 6px 15px rgba(255, 77, 109, 0.35);
 }
 
-.yes-btn:hover {
-  background-color: #ff2a54;
-  box-shadow: 0 8px 20px rgba(255, 77, 109, 0.5);
+.no-btn {
+  background-color: #d8e2dc;
+  color: #8c9c91;
+  pointer-events: none;     /* Lets the outer div handle clicks/hovers */
 }
 
-/* Pulsate Animation for Yes Button */
 .animate-pulse {
   animation: cutePulse 2s infinite;
 }
 
 @keyframes cutePulse {
-  0% { transform: scale(1.0); box-shadow: 0 6px 15px rgba(255, 77, 109, 0.35); }
-  50% { transform: scale(1.05); box-shadow: 0 10px 25px rgba(255, 77, 109, 0.6); }
-  100% { transform: scale(1.0); box-shadow: 0 6px 15px rgba(255, 77, 109, 0.35); }
+  0% { transform: scale(1.0); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1.0); }
 }
 
-/* NO BUTTON: The elusive pastel grey */
-.no-btn {
-  background-color: #d8e2dc;
-  color: #8c9c91;
-  position: absolute; /* Allows random X/Y positioning */
-  z-index: 2;
-  transition: all 0.1s ease; /* Faster transition for faster evasions */
-}
-
-.no-btn:hover {
-  background-color: #ffe5d9; /* Slight color change on hover, if possible */
-  color: #ff99ac;
-}
-
-/* HIDDEN CONTENT SECTION */
 .hidden-content {
   margin-top: 25px;
-  animation: revealCute 1s ease forwards;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -593,23 +596,13 @@ body > button:not(.active), body > .btn:not(.active) {
 .forgive-gif {
   max-width: 250px;
   border-radius: 20px;
-  box-shadow: 0 8px 20px rgba(255, 179, 195, 0.4);
-  border: 4px solid #fff5f8;
 }
 
 .forgive-message {
   font-size: 1.25rem;
   color: #ff477e;
   margin-top: 20px;
-  font-weight: 600;
-  line-height: 1.6;
-  max-width: 90%;
   text-align: center;
-}
-
-@keyframes revealCute {
-  from { opacity: 0; transform: translateY(15px); }
-  to { opacity: 1; transform: translateY(0); }
 }
 
   </style>
@@ -1051,21 +1044,29 @@ Many people will say it's not possible, it's delusional, think about reality,  t
 </div>
 
   <!-- Page 10: Forgive Me Page (Final) -->
-<div class="page" id="page10">
-  <h2 class="page-title cute-title">Will you forgive me? 🥺💕</h2>
+<h2 class="page-title cute-title">Will you forgive me? 🥺💕</h2>
 
-  <!-- Buttons Container: Defined relative for movement -->
-  <div id="forgive-buttons-container" class="forgive-container">
-    <!-- 'Yes' is pulsate animated; 'No' is absolutely positioned -->
+<!-- Buttons Container -->
+<div id="forgive-buttons-container" class="forgive-container">
+
+  <!-- NO Group Wrapper (Starts on the LEFT, moves around left half) -->
+  <div id="no-btn-wrapper" class="btn-group no-group" onmouseover="moveNoButton()" onclick="moveNoButton()">
+    <button id="no-btn" class="cute-btn no-btn">No Way! 💔</button>
+    <img src="sad-image.gif" alt="Sad" class="btn-match-img" />
+  </div>
+
+  <!-- YES Group Wrapper (Stays on the RIGHT) -->
+  <div class="btn-group">
     <button id="yes-btn" class="cute-btn yes-btn animate-pulse" onclick="showForgivenContent()">Yes, I Forgive You! ❤️</button>
-    <button id="no-btn" class="cute-btn no-btn" onmouseover="moveNoButton()" onclick="moveNoButton()">No Way! 💔</button>
+    <img src="happy-image.gif" alt="Happy" class="btn-match-img" />
   </div>
 
-  <!-- Hidden Content (Reveals only after Yes is clicked) -->
-  <div id="forgiven-content" class="hidden-content" style="display: none;">
-    <img src="https://media.tenor.com/4g-Ff-w5LAAAAAAM/hug-pusheen.gif" alt="Cute Pusheen Hug GIF" class="forgive-gif" />
-    <p class="forgive-message">Yay! Best decision ever! 🥰 My promise stands: to love and protect your peace every single day. You are my world! ✨</p>
-  </div>
+</div>
+
+<!-- Hidden Content (Reveals after clicking Yes) -->
+<div id="forgiven-content" class="hidden-content" style="display: none;">
+  <img src="page10.gif" alt="Cute Hug GIF" class="forgive-gif" />
+  <p class="forgive-message">Yay! Best decision ever! 🥰 I love you forever! ✨</p>
 </div>
 
   
@@ -1221,51 +1222,56 @@ function typeWriterEffect() {
 
   type();
 }
-    // Function to move the 'No' button randomly when hovered or clicked
+// 1. Function to keep movement strictly inside the left half
+// Moves the 'No Way' group randomly within ONLY the left half (50%) of container
 function moveNoButton() {
-  const noBtn = document.getElementById('no-btn');
+  const noGroup = document.getElementById('no-btn-wrapper');
   const container = document.getElementById('forgive-buttons-container');
 
-  // Define how far away the button moves (faster reaction)
-  // We subtract button size from container size for proper boundaries
-  const maxX = container.clientWidth - noBtn.clientWidth - 10;
-  const maxY = container.clientHeight - noBtn.clientHeight - 10;
+  if (!noGroup || !container) return;
 
-  // Generate random coordinates within bounds
-  // We subtract some padding (10) to prevent perfect corner jumps
-  const randomX = Math.floor(Math.random() * maxX);
-  const randomY = Math.floor(Math.random() * maxY);
+  // Calculate boundary restricted strictly to the left half
+  const maxLeftX = (container.clientWidth / 2) - noGroup.clientWidth - 10;
+  const maxY = container.clientHeight - noGroup.clientHeight - 10;
 
-  // Set the position absolutely
-  noBtn.style.left = `${randomX}px`;
-  noBtn.style.top = `${randomY}px`;
+  const safeX = Math.max(10, Math.floor(Math.random() * Math.max(10, maxLeftX)));
+  const safeY = Math.max(10, Math.floor(Math.random() * Math.max(10, maxY)));
+
+  noGroup.style.left = `${safeX}px`;
+  noGroup.style.top = `${safeY}px`;
 }
 
-// Function to handle the final sequence
+// Proximity detection: dodges before the cursor touches it
+document.addEventListener('mousemove', function(e) {
+  const noGroup = document.getElementById('no-btn-wrapper');
+  if (!noGroup) return;
+
+  const rect = noGroup.getBoundingClientRect();
+  const btnCenterX = rect.left + rect.width / 2;
+  const btnCenterY = rect.top + rect.height / 2;
+
+  const distance = Math.hypot(e.clientX - btnCenterX, e.clientY - btnCenterY);
+
+  // Triggers movement if mouse is within 70px
+  if (distance < 70) {
+    moveNoButton();
+  }
+});
+
+// Handles 'Yes' button click
 function showForgivenContent() {
-  // 1. Target the button areas
   const buttonsContainer = document.getElementById('forgive-buttons-container');
   const forgivenContent = document.getElementById('forgiven-content');
   const yesBtn = document.getElementById('yes-btn');
 
-  // 2. Add an extra celebration effect to the "Yes" button before it disappears
   yesBtn.innerHTML = "THANK YOU!!! 🎉💕";
-  yesBtn.style.background = "#2ecc71"; // Turn bright green briefly
-  yesBtn.classList.remove('animate-pulse');
+  yesBtn.style.background = "#2ecc71";
 
-  // 3. Short delay, then transition the content
   setTimeout(() => {
-    // Hide the decision buttons
     buttonsContainer.style.display = 'none';
-
-    // Show the secret GIF and message
-    forgivenContent.style.display = 'flex'; // Use flex for center alignment
-
-    // (Optional) If you have a separate function to stop movement:
-    // stopNoButtonMovement();
-  }, 900); // 0.9s delay gives green effect time to be seen
+    forgivenContent.style.display = 'flex';
+  }, 900);
 }
-
   </script>
 
 </body>
