@@ -513,7 +513,38 @@ body > button:not(.active), body > .btn:not(.active) {
       padding: 0 !important;
     }
   /* Container for the final cute interaction page */
+/* Styling for Page 10 container */
+#page10 .moving-container {
+  position: relative;
+  width: 100%;
+  height: 200px;
+  display: flex;
+  justify-content: flex-end; /* Keeps YES on the right */
+  align-items: flex-start;
+  margin-top: 20px;
+}
 
+#page10 .btn-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+#page10 .no-group {
+  position: absolute;
+  left: 10px;               /* Starts on the left side */
+  top: 0;
+  transition: all 0.12s ease;
+}
+
+#page10 .btn-img {
+  width: 90px;
+  height: 90px;
+  object-fit: cover;
+  border-radius: 12px;
+  pointer-events: none;     /* Allows mouse events to hit the container */
+}
 
   </style>
 </head>
@@ -954,7 +985,31 @@ Many people will say it's not possible, it's delusional, think about reality,  t
 </div>
 
   <!-- Page 10: Forgive Me Page (Final) -->
-<!-- Inside page 10 div -->
+<!-- PAGE 10: The Final Verdict -->
+<div id="page10" class="page">
+  <h1>Are We Okay? 🥺❤️</h1>
+  <p>Please forgive me?</p>
+
+  <div class="moving-container" id="movingContainer">
+    <!-- NO Group (Starts on the LEFT) -->
+    <div id="noGroup" class="btn-group no-group" onclick="moveNoButton()">
+      <button id="noBtn" class="btn no-btn">No 😜</button>
+      <img src="sad-image.gif" alt="Sad" class="btn-img" />
+    </div>
+
+    <!-- YES Group (Stays on the RIGHT) -->
+    <div class="btn-group">
+      <button id="yesBtn" class="btn yes-btn" onclick="forgiven()">Yes! 💕</button>
+      <img src="happy-image.gif" alt="Happy" class="btn-img" />
+    </div>
+  </div>
+
+  <div id="finalMessage" style="display:none; margin-top:30px;">
+    <h2>YAY! 🎉❤️</h2>
+    <p>Thank you my love! I love you so much! ✨🥰</p>
+    <img src="https://media1.tenor.com/m/gU2aK858g_YAAAAC/milk-and-mocha.gif" alt="Celebration">
+  </div>
+</div>
 
 
   
@@ -1110,7 +1165,48 @@ function typeWriterEffect() {
 
   type();
 }
-// 1. Function to keep movement strictly inside the left half
+// Navigation function (now supports page 10)
+function nextPage(pageNum) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById('page' + pageNum).classList.add('active');
+}
+
+// Keeps NO group strictly inside the left 40% of the box on Page 10
+function moveNoButton() {
+  const noGroup = document.getElementById('noGroup');
+  const container = document.getElementById('movingContainer');
+  if (!noGroup || !container) return;
+
+  const maxLeftX = (container.clientWidth * 0.4) - noGroup.clientWidth;
+  const maxY = container.clientHeight - noGroup.clientHeight;
+
+  const safeX = Math.max(0, Math.floor(Math.random() * Math.max(0, maxLeftX)));
+  const safeY = Math.max(0, Math.floor(Math.random() * Math.max(0, maxY)));
+
+  noGroup.style.left = `${safeX}px`;
+  noGroup.style.top = `${safeY}px`;
+}
+
+// Moves NO group before the cursor touches it
+document.addEventListener('mousemove', function(e) {
+  const noGroup = document.getElementById('noGroup');
+  if (!noGroup) return;
+
+  const rect = noGroup.getBoundingClientRect();
+  const centerX = rect.left + rect.width / 2;
+  const centerY = rect.top + rect.height / 2;
+
+  const distance = Math.hypot(e.clientX - centerX, e.clientY - centerY);
+
+  if (distance < 70) {
+    moveNoButton();
+  }
+});
+
+function forgiven() {
+  document.getElementById('movingContainer').style.display = 'none';
+  document.getElementById('finalMessage').style.display = 'block';
+}
 
   </script>
 
