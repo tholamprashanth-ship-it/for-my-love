@@ -517,12 +517,14 @@ body > button:not(.active), body > .btn:not(.active) {
 .forgive-container {
   position: relative;
   width: 100%;
-  height: 250px;
+  max-width: 400px;
+  height: 220px;
+  margin: 20px auto 0 auto;  /* Centers the container inside the card */
   display: flex;
-  justify-content: flex-end; /* Keeps YES group on the right */
+  justify-content: flex-end; /* YES group on the right side of the card */
   align-items: flex-start;
-  padding-right: 30px;
-  margin-top: 20px;
+  box-sizing: border-box;
+
 }
 
 /* Stacks button and image vertically */
@@ -536,8 +538,8 @@ body > button:not(.active), body > .btn:not(.active) {
 /* Positions NO group absolutely on the left */
 .no-group {
   position: absolute;
-  left: 20px;               /* Initial left starting position */
-  top: 10px;
+  left: 10px;               /* Initial left starting position */
+  top: 0px;
   z-index: 2;
   transition: all 0.12s ease; /* Smooth dodge animation */
 }
@@ -545,12 +547,12 @@ body > button:not(.active), body > .btn:not(.active) {
 /* Button image scaling */
 .btn-match-img {
   width: 100%;
-  max-width: 100%;
-  height: 120px;
+  
+  height: 100px;
   object-fit: cover;
-  border-radius: 15px;
+  border-radius: 12px;
   pointer-events: none;     /* Mouse events pass to the button wrapper */
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+
 }
 
 /* Button Base Styles */
@@ -1044,29 +1046,35 @@ Many people will say it's not possible, it's delusional, think about reality,  t
 </div>
 
   <!-- Page 10: Forgive Me Page (Final) -->
-<h2 class="page-title cute-title">Will you forgive me? 🥺💕</h2>
+<!-- Inside page 10 div -->
+<div class="page" id="page10">
+  <!-- Main white card container -->
+  <div class="card-container">
+    <h2 class="page-title cute-title">Will you forgive me? 🥺💕</h2>
 
-<!-- Buttons Container -->
-<div id="forgive-buttons-container" class="forgive-container">
+    <!-- MUST BE INSIDE THE CARD CONTAINER -->
+    <div id="forgive-buttons-container" class="forgive-container">
 
-  <!-- NO Group Wrapper (Starts on the LEFT, moves around left half) -->
-  <div id="no-btn-wrapper" class="btn-group no-group" onmouseover="moveNoButton()" onclick="moveNoButton()">
-    <button id="no-btn" class="cute-btn no-btn">No Way! 💔</button>
-    <img src="sad-image.gif" alt="Sad" class="btn-match-img" />
+      <!-- NO Group Wrapper -->
+      <div id="no-btn-wrapper" class="btn-group no-group" onmouseover="moveNoButton()" onclick="moveNoButton()">
+        <button id="no-btn" class="cute-btn no-btn">No Way! 💔</button>
+        <img src="sad-image.gif" alt="Sad" class="btn-match-img" />
+      </div>
+
+      <!-- YES Group Wrapper -->
+      <div class="btn-group">
+        <button id="yes-btn" class="cute-btn yes-btn animate-pulse" onclick="showForgivenContent()">Yes, I Forgive You! ❤️</button>
+        <img src="happy-image.gif" alt="Happy" class="btn-match-img" />
+      </div>
+
+    </div>
+
+    <!-- Hidden Content -->
+    <div id="forgiven-content" class="hidden-content" style="display: none;">
+      <img src="page10.gif" alt="Cute Hug GIF" class="forgive-gif" />
+      <p class="forgive-message">Yay! Best decision ever! 🥰 I love you forever! ✨</p>
+    </div>
   </div>
-
-  <!-- YES Group Wrapper (Stays on the RIGHT) -->
-  <div class="btn-group">
-    <button id="yes-btn" class="cute-btn yes-btn animate-pulse" onclick="showForgivenContent()">Yes, I Forgive You! ❤️</button>
-    <img src="happy-image.gif" alt="Happy" class="btn-match-img" />
-  </div>
-
-</div>
-
-<!-- Hidden Content (Reveals after clicking Yes) -->
-<div id="forgiven-content" class="hidden-content" style="display: none;">
-  <img src="page10.gif" alt="Cute Hug GIF" class="forgive-gif" />
-  <p class="forgive-message">Yay! Best decision ever! 🥰 I love you forever! ✨</p>
 </div>
 
   
