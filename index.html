@@ -513,99 +513,7 @@ body > button:not(.active), body > .btn:not(.active) {
       padding: 0 !important;
     }
   /* Container for the final cute interaction page */
-/* Container layout: pushes standard contents (YES group) to the right */
-.forgive-container {
-  position: relative;
-  width: 100%;
-  max-width: 400px;
-  height: 220px;
-  margin: 20px auto 0 auto;  /* Centers the container inside the card */
-  display: flex;
-  justify-content: flex-end; /* YES group on the right side of the card */
-  align-items: flex-start;
-  box-sizing: border-box;
 
-}
-
-/* Stacks button and image vertically */
-.btn-group {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
-}
-
-/* Positions NO group absolutely on the left */
-.no-group {
-  position: absolute;
-  left: 10px;               /* Initial left starting position */
-  top: 0px;
-  z-index: 2;
-  transition: all 0.12s ease; /* Smooth dodge animation */
-}
-
-/* Button image scaling */
-.btn-match-img {
-  width: 100%;
-  
-  height: 100px;
-  object-fit: cover;
-  border-radius: 12px;
-  pointer-events: none;     /* Mouse events pass to the button wrapper */
-
-}
-
-/* Button Base Styles */
-.cute-btn {
-  padding: 12px 28px;
-  font-size: 1.1rem;
-  font-weight: 700;
-  border: none;
-  border-radius: 50px;
-  cursor: pointer;
-  font-family: inherit;
-}
-
-.yes-btn {
-  background-color: #ff4d6d;
-  color: white;
-  box-shadow: 0 6px 15px rgba(255, 77, 109, 0.35);
-}
-
-.no-btn {
-  background-color: #d8e2dc;
-  color: #8c9c91;
-  pointer-events: none;     /* Lets the outer div handle clicks/hovers */
-}
-
-.animate-pulse {
-  animation: cutePulse 2s infinite;
-}
-
-@keyframes cutePulse {
-  0% { transform: scale(1.0); }
-  50% { transform: scale(1.05); }
-  100% { transform: scale(1.0); }
-}
-
-.hidden-content {
-  margin-top: 25px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.forgive-gif {
-  max-width: 250px;
-  border-radius: 20px;
-}
-
-.forgive-message {
-  font-size: 1.25rem;
-  color: #ff477e;
-  margin-top: 20px;
-  text-align: center;
-}
 
   </style>
 </head>
@@ -1047,35 +955,7 @@ Many people will say it's not possible, it's delusional, think about reality,  t
 
   <!-- Page 10: Forgive Me Page (Final) -->
 <!-- Inside page 10 div -->
-<div class="page" id="page10">
-  <!-- Main white card container -->
-  <div class="card-container">
-    <h2 class="page-title cute-title">Will you forgive me? 🥺💕</h2>
 
-    <!-- MUST BE INSIDE THE CARD CONTAINER -->
-    <div id="forgive-buttons-container" class="forgive-container">
-
-      <!-- NO Group Wrapper -->
-      <div id="no-btn-wrapper" class="btn-group no-group" onmouseover="moveNoButton()" onclick="moveNoButton()">
-        <button id="no-btn" class="cute-btn no-btn">No Way! 💔</button>
-        <img src="sad-image.gif" alt="Sad" class="btn-match-img" />
-      </div>
-
-      <!-- YES Group Wrapper -->
-      <div class="btn-group">
-        <button id="yes-btn" class="cute-btn yes-btn animate-pulse" onclick="showForgivenContent()">Yes, I Forgive You! ❤️</button>
-        <img src="happy-image.gif" alt="Happy" class="btn-match-img" />
-      </div>
-
-    </div>
-
-    <!-- Hidden Content -->
-    <div id="forgiven-content" class="hidden-content" style="display: none;">
-      <img src="page10.gif" alt="Cute Hug GIF" class="forgive-gif" />
-      <p class="forgive-message">Yay! Best decision ever! 🥰 I love you forever! ✨</p>
-    </div>
-  </div>
-</div>
 
   
 
@@ -1231,55 +1111,7 @@ function typeWriterEffect() {
   type();
 }
 // 1. Function to keep movement strictly inside the left half
-// Moves the 'No Way' group randomly within ONLY the left half (50%) of container
-function moveNoButton() {
-  const noGroup = document.getElementById('no-btn-wrapper');
-  const container = document.getElementById('forgive-buttons-container');
 
-  if (!noGroup || !container) return;
-
-  // Calculate boundary restricted strictly to the left half
-  const maxLeftX = (container.clientWidth / 2) - noGroup.clientWidth - 10;
-  const maxY = container.clientHeight - noGroup.clientHeight - 10;
-
-  const safeX = Math.max(10, Math.floor(Math.random() * Math.max(10, maxLeftX)));
-  const safeY = Math.max(10, Math.floor(Math.random() * Math.max(10, maxY)));
-
-  noGroup.style.left = `${safeX}px`;
-  noGroup.style.top = `${safeY}px`;
-}
-
-// Proximity detection: dodges before the cursor touches it
-document.addEventListener('mousemove', function(e) {
-  const noGroup = document.getElementById('no-btn-wrapper');
-  if (!noGroup) return;
-
-  const rect = noGroup.getBoundingClientRect();
-  const btnCenterX = rect.left + rect.width / 2;
-  const btnCenterY = rect.top + rect.height / 2;
-
-  const distance = Math.hypot(e.clientX - btnCenterX, e.clientY - btnCenterY);
-
-  // Triggers movement if mouse is within 70px
-  if (distance < 70) {
-    moveNoButton();
-  }
-});
-
-// Handles 'Yes' button click
-function showForgivenContent() {
-  const buttonsContainer = document.getElementById('forgive-buttons-container');
-  const forgivenContent = document.getElementById('forgiven-content');
-  const yesBtn = document.getElementById('yes-btn');
-
-  yesBtn.innerHTML = "THANK YOU!!! 🎉💕";
-  yesBtn.style.background = "#2ecc71";
-
-  setTimeout(() => {
-    buttonsContainer.style.display = 'none';
-    forgivenContent.style.display = 'flex';
-  }, 900);
-}
   </script>
 
 </body>
