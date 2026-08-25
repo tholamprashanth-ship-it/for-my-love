@@ -1209,6 +1209,16 @@ function forgiven() {
   document.getElementById('movingContainer').style.display = 'none';
   document.getElementById('finalMessage').style.display = 'block';
 }
+function nextPage(pageNum) {
+      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+
+      const targetPage = document.getElementById('page' + pageNum);
+      if (targetPage) {
+        targetPage.classList.add('active');
+      }
+
+      window.scrollTo(0, 0); // Resets scroll to top on page switch
+    }
 
   </script>
 
