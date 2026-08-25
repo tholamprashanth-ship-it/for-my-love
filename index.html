@@ -353,6 +353,158 @@
 body > button:not(.active), body > .btn:not(.active) {
     display: none !important;
 }
+    /* page9 Envelope Container */
+.envelope-wrapper {
+  perspective: 1000px;
+  display: flex;
+  justify-content: center;
+  margin: 30px auto 10px auto;
+}
+
+.envelope {
+  width: 280px;
+  height: 180px;
+  background: #f3a6b7;
+  position: relative;
+  border-radius: 0 0 10px 10px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+  transition: transform 0.3s ease;
+}
+
+/* Flap & Pocket Layout */
+.envelope .flap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  border-left: 140px solid transparent;
+  border-right: 140px solid transparent;
+  border-top: 100px solid #e2889c;
+  transform-origin: top;
+  transition: transform 0.6s ease, z-index 0.2s ease;
+  z-index: 4;
+}
+
+.envelope .pocket {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  border-left: 140px solid #f8b3c3;
+  border-right: 140px solid #f8b3c3;
+  border-bottom: 100px solid #f59eb2;
+  border-radius: 0 0 10px 10px;
+  z-index: 3;
+}
+
+/* Glowing Red Heart Seal */
+.wax-seal {
+  position: absolute;
+  top: 80px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 46px;
+  height: 46px;
+  background: #ff2a6d;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 1.3rem;
+  box-shadow: 0 0 12px #ff2a6d, 0 0 24px rgba(255, 42, 109, 0.6);
+  z-index: 5;
+  cursor: pointer;
+  animation: pulseGlow 1.8s infinite ease-in-out;
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+@keyframes pulseGlow {
+  0% {
+    box-shadow: 0 0 8px #ff2a6d, 0 0 16px rgba(255, 42, 109, 0.5);
+    transform: translate(-50%, -50%) scale(1);
+  }
+  50% {
+    box-shadow: 0 0 18px #ff2a6d, 0 0 32px rgba(255, 42, 109, 0.8);
+    transform: translate(-50%, -50%) scale(1.08);
+  }
+  100% {
+    box-shadow: 0 0 8px #ff2a6d, 0 0 16px rgba(255, 42, 109, 0.5);
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+/* Letter Styling */
+.letter {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  width: 260px;
+  height: 150px;
+  background: #fff0f5;
+  border: 1px solid #ffccd5;
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  z-index: 2;
+  transition: transform 0.6s ease 0.3s, height 0.6s ease 0.3s;
+  overflow-y: auto;
+  box-sizing: border-box;
+}
+
+/* Envelope Open State */
+.envelope.open .flap {
+  transform: rotateX(180deg);
+  z-index: 1;
+}
+
+.envelope.open .wax-seal {
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.3);
+  pointer-events: none;
+}
+
+.envelope.open .letter {
+  transform: translateY(-110px);
+  height: 280px;
+  z-index: 6;
+  box-shadow: 0 10px 25px rgba(214, 51, 132, 0.15);
+}
+
+/* Typewriter & Cute Text Styling */
+.typewriter-body {
+  font-size: 0.9rem;
+  color: #5c2c3b;
+  line-height: 1.6;
+  text-align: left;
+  white-space: pre-wrap;
+  margin-bottom: 12px;
+}
+
+.typewriter-body::after {
+  content: '💗';
+  animation: blink 0.7s infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.letter-gif-wrapper {
+  margin-top: 15px;
+  text-align: center;
+}
+
+.letter-gif {
+  width: 100%;
+  max-height: 160px;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
   </style>
 </head>
 <body>
@@ -376,7 +528,7 @@ body > button:not(.active), body > .btn:not(.active) {
 
     <p>That is what makes my actions so unforgivable, and it breaks my heart knowing how terribly I let you down. You gave me softness, genuine pure love, and gentleness, and I in return gave you ouchies, pain, stressed you out, ran away when your mind was filled with a lot of questions, disrespected you, lied about my past, hid things, tested you, and changed into absolute shit, not giving you reassurance always, not loving you the way you wanted, not keeping my promises, arguments, fake swearing, and many things. Even after all the things I did, still you stayed with me for my good. I wanted to show you the improvements, wanted to be the man who will take care of you well. I wanna become a better person. I started working on many things; I still sucked at some things, but I kept doing them so I will never disappoint you, never gonna hurt you, or ever gonna stress you and ruin your health. But I messed up big that night, telling you that you weren't worth being loved for all my efforts was the biggest, most cruel lie I could have ever spoken. I was mad, I felt offended by your words—I told you many times not to mix me with them, and the way you said maybe each one of you was never worth being loved. This sentence broke me, hurt me, and made me angry and offended. Without even thinking, I said it back, but I promise I never meant it at all and never will.</p>
 
-    <p>I only said that out of anger, and I mindlessly said it back out of ego; I swear there is no other reason for it—trust me. I have regretted it so much since that day, and every day I feel so empty and lonely without you. My mind is always running around thoughts of you, with so many worries like: Is she doing okay? How is her mental and physical health? Is she taking her meds? How much suffering is she handling alone? How is her time and day going? Does she even think about me or worry about me? All these thoughts and worries are killing my mind. I can't handle your absence, and I feel like I am not even living life without you in it. You know how much I am missing you right now. I tried contacting you on many platforms not to bother you or disturb your peace, but because I just want to speak everything that I have stored in my heart. I want to make things right. I want you to listen to my genuine reason for my behavior on that day. I even got so jealous when you didn't text me for the whole day, but you texted your friends. I felt so much less important. If that shit day hadn't happened, right now we would be together, having talks, having fun in games, and everything would have been peaceful without any stress. Yes, I know I am the reason for it. I feel so bad and so much worse for behaving like that and for saying those cruel words to you.</p>
+    <p>I only said that out of anger, and I mindlessly said it back out of ego; I swear there is no other reason for it—trust me. I have regretted it so much since that day, and every day I feel so empty and lonely without you. My mind is always running around thoughts of you, with so many worries like: Is she doing okay? How is her mental and physical health? Is she taking her meds? How much suffering is she handling alone? How is her time and day going? Does she even think about me or worry about me? All these thoughts and worries are killing my mind. I can't handle your absence, and I feel like I am not even living life without you in it. You know how much I am missing you right now. I tried contacting you on many platforms not to bother you or disturb your peace, but because I just want to speak everything that I have stored in my heart. I want to make things right. I want you to listen to my genuine reason for my behavior on that day. I even got so jealous when you didn't text me for the whole day, but you texted your friends. I felt so much less important. If that shit day hadn't happened, right now we would be together, having talks, having fun in games, and everything would have been peaceful without any stress. Yes, I know I am the reason for it. I feel so bad and so much worse for behaving like that and for saying those cruel words to you. I'm genuinely , heartfully so so sorry for everything.</p>
     <img src="page2.gif" style="display: block; width: 120px; height: auto; margin: 0 auto 15px;" alt="Sad Cat GIF">
     <br>
     <button class="btn" onclick="nextPage(3)">Reasons you're so special ➔</button>
@@ -755,7 +907,40 @@ Many people will say it's not possible, it's delusional, think about reality,  t
   <button class="btn" onclick="nextPage(7)">⬅️ Back</button>
   <button class="btn" onclick="nextPage(9)">next ➔</button>
 </div>      
-<!-- PAGE 9: The Sealed Letter -->
+<!-- PAGE 9: The Sealed Envelope -->
+<div id="page9" class="page">
+  <h1>A Letter For You ✉️</h1>
+  <p style="margin-bottom: 20px;">Tap the heart seal to open...</p>
+
+  <!-- Envelope Container -->
+  <div class="envelope-wrapper">
+    <div id="envelope" class="envelope">
+      <div class="flap"></div>
+      <div class="pocket"></div>
+      
+      <!-- Glowing Heart Button -->
+      <div id="waxSeal" class="wax-seal" onclick="openEnvelope()">❤️</div>
+
+      <!-- Letter Content -->
+      <div id="letter" class="letter">
+        <div class="letter-content">
+          <p id="typewriterText" class="typewriter-body"></p>
+          
+          <!-- Cute GIF (Hidden initially) -->
+          <div id="letterGif" class="letter-gif-wrapper" style="display: none;">
+            <img src="page10.gif" alt="Cute GIF" class="letter-gif">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top: 25px;">
+    <button class="btn" onclick="nextPage(8)">⬅️ Back</button>
+    <!-- Hidden until typing completes -->
+    <button id="page10Btn" class="btn" style="display: none;" onclick="nextPage(10)">Next ➔</button>
+  </div>
+</div>
 
   
 
@@ -864,6 +1049,52 @@ Many people will say it's not possible, it's delusional, think about reality,  t
         }
       }
     }
+    // Letter Content
+const letterParagraph = "I wanted to write this letter to remind you of how deeply you matter to me. Even when distance or misunderstandings get in the way, my feeling for you never changes. Every memory we have made together brings a smile to my face, and I cherish every little detail about us. Thank you for being in my life and for showing me what true love feels like. I promise to always care for you, respect you, and hold you close to my heart forever.";
+
+let isEnvelopeOpened = false;
+
+function openEnvelope() {
+  if (isEnvelopeOpened) return;
+  isEnvelopeOpened = true;
+
+  const envelope = document.getElementById('envelope');
+  envelope.classList.add('open');
+
+  // Start typewriter effect after flap opens
+  setTimeout(() => {
+    typeWriterEffect();
+  }, 900);
+}
+
+function typeWriterEffect() {
+  const textElement = document.getElementById('typewriterText');
+  let index = 0;
+  const speed = 40; // Typing speed in ms
+
+  function type() {
+    if (index < letterParagraph.length) {
+      textElement.textContent += letterParagraph.charAt(index);
+      index++;
+
+      // Auto-scroll the letter as it types
+      const letter = document.getElementById('letter');
+      letter.scrollTop = letter.scrollHeight;
+
+      setTimeout(type, speed);
+    } else {
+      // Typing finished: show GIF and enable Page 10 button
+      document.getElementById('letterGif').style.display = 'block';
+      document.getElementById('page10Btn').style.display = 'inline-block';
+
+      // Scroll to show the GIF
+      const letter = document.getElementById('letter');
+      letter.scrollTop = letter.scrollHeight;
+    }
+  }
+
+  type();
+}
 
   </script>
 
